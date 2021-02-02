@@ -27,7 +27,6 @@ export default function EmptyState({ conversation, currentUser }) {
 			{conversation.users && (
 				<React.Fragment>
 					<Grid item>
-						{/* <img src="/Images/emptyImg.svg" /> */}
 						<Avatar
 							className={classes.avatar}
 							style={{
@@ -52,7 +51,6 @@ export default function EmptyState({ conversation, currentUser }) {
 					<Typography variant="h4" className={classes.emptyHeader}>
 						{conversation.users.filter((user) => user._id !== currentUser._id)[0].username}
 					</Typography>
-					{/* <Typography variant="h6">Select a friend or contact to start chatting.</Typography> */}
 				</React.Fragment>
 			)}
 		</Grid>

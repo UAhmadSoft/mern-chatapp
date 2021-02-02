@@ -42,7 +42,6 @@ router.post('/', async (req, res, next) => {
 
             let chat = await Chat.findByIdAndUpdate(req.body.conversationId, { latestMessage: message }).then(results => {
                 for (const pair of req.onlineUsers) {
-                    // console.log(typeof results.users[1], typeof pair.value)
                     if (results.users[0].toString() === pair.value) {
                         req.io.sockets.to(pair.key).emit('message received', newMessage)
                     }
@@ -54,10 +53,6 @@ router.post('/', async (req, res, next) => {
             })
                 .catch(error => console.log(error))
 
-            // need to change to user being sent message
-
-            insertNotifications(chat, message, req)
-
             res.status(201).send(message);
         })
         .catch(error => {
@@ -66,14 +61,5 @@ router.post('/', async (req, res, next) => {
         })
 })
 
-
-function insertNotifications(chat, message, req) {
-    chat.users.forEach(userId => {
-        if (JSON.stringify(userId) === JSON.stringify(message.sender._id)) return;
-
-        req.io.sockets.to(userId).emit('notification received', "hey")
-        Notification.insertNotification(userId, message.sender._id, "newMessage", message.chat._id)
-    })
-}
 
 module.exports = router;
