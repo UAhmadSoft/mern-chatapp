@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
-import MenuItem from '@material-ui/core/MenuItem';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import commonUtilities from '../utilities/common';
-import Avatar from '@material-ui/core/Avatar';
-import Badge from '@material-ui/core/Badge';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
-import { useGetActiveChat, useGetChatById, useNotifications, useMarkAsRead } from '../services/chatService';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import MenuItem from '@material-ui/core/MenuItem';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import React, { useEffect, useState } from 'react';
+import ListAvatar from '../components/ListAvatar';
+import { useGetActiveChat, useGetChatById, useMarkAsRead, useNotifications } from '../services/chatService';
 
 const useStyles = makeStyles((theme) => ({
 	spinner: {
@@ -30,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
 		marginLeft: 10,
 		marginTop: -10
 	},
-	avatar: { width: 44, height: 44, textTransform: 'uppercase', alignItems: 'center' },
 	bottomUserLabel: {
 		marginLeft: 10
 	},
@@ -48,24 +43,6 @@ const useStyles = makeStyles((theme) => ({
 		marginLeft: 40
 	}
 }));
-
-const StyledBadge = withStyles((theme) => ({
-	badge: {
-		backgroundColor: (props) => props.color,
-		color: (props) => props.color,
-		boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-		'&::after': {
-			position: 'absolute',
-			top: 0,
-			left: 0,
-			width: '100%',
-			height: '100%',
-			borderRadius: '50%',
-			border: '1px solid currentColor',
-			content: '""'
-		}
-	}
-}))(Badge);
 
 export default function Conversations({
 	newMessage,
@@ -151,33 +128,7 @@ export default function Conversations({
 					clearNotifications(convo._id);
 				}}
 			>
-				<ListItemAvatar className={classes.avatar}>
-					<StyledBadge
-						overlap="circle"
-						anchorOrigin={{
-							vertical: 'bottom',
-							horizontal: 'right'
-						}}
-						variant="dot"
-						color={isOnline(onlineUsers, convo.users) ? '#1CED84' : '#D0DAE9'}
-					>
-						<Avatar
-							className={classes.avatar}
-							style={{
-								fontWeight: 'bold',
-								backgroundColor:
-									'#' +
-									commonUtilities.intToRGB(
-										commonUtilities.hashCode(
-											convo.users.filter((user) => user._id !== currentUser._id)[0].username
-										)
-									)
-							}}
-						>
-							{convo.users.filter((user) => user._id !== currentUser._id)[0].username.slice(0, 2)}
-						</Avatar>
-					</StyledBadge>
-				</ListItemAvatar>
+				<ListAvatar convo={convo} onlineUsers={onlineUsers} currentUser={currentUser} isOnline={isOnline} />
 				<ListItemText
 					className={classes.listContent}
 					primary={
