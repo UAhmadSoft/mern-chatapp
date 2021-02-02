@@ -27,7 +27,6 @@ app.use(session({
     }
 }))
 
-
 // Routes
 const loginRoute = require('./routes/loginRoutes');
 const registerRoute = require('./routes/registerRoutes');
@@ -91,11 +90,6 @@ io.on('connection', (socket) => {
         map.delete(socket.id);
         io.sockets.emit('offline', map);
     });
-
-    function emitNotification(userId) {
-        if (userId == userLoggedIn._id) return;
-        socket.emit('notification received', userId)
-    }
 })
 
 
