@@ -15,7 +15,7 @@ export default function Home() {
 	const [ typing, setTyping ] = useState(false);
 	const [ selected, setSelected ] = useState();
 
-	const socket = socketIOClient('https://mern-signal-chat.herokuapp.com/', {
+	const socket = socketIOClient(process.env.REACT_APP_API_URL, {
 		transports: [ 'websocket', 'polling', 'flashsocket' ],
 		reconnection: true,
 		reconnectionDelay: 3000,
