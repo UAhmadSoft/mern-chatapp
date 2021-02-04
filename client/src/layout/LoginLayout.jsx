@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: 'center'
 	},
 	image: {
-		backgroundImage: 'url(https://yeeeum.s3-us-west-1.amazonaws.com/bg-img.png)',
+		backgroundImage: 'url(/images/bg-img.png)',
 		backgroundRepeat: 'no-repeat',
 		backgroundSize: 'cover',
 		backgroundPosition: 'center'
@@ -48,7 +48,7 @@ export default function Authorization({ children }) {
 			<Grid item xs={false} sm={4} md={5} className={classes.image}>
 				<Box className={classes.overlay}>
 					<Hidden xsDown>
-						<img width={67} src="https://yeeeum.s3-us-west-1.amazonaws.com/chatBubble.png" />
+						<img width={67} src="/images/chatBubble.png" />
 						<Hidden smDown>
 							<Typography className={classes.heroText} variant="h4">
 								Converse with anyone with any language
