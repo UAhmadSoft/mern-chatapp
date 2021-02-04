@@ -24,7 +24,7 @@ const io = require('socket.io')(server, { pingTimeout: 25000, wsEngine: 'ws' });
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, "/client/build")));
 
 var store = new MongoDBStore({
     uri: process.env.MONGO_URI,
