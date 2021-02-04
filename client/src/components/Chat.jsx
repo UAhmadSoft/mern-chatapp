@@ -231,7 +231,7 @@ export default function Chat({
 				<div className={classes.dots}>
 					<img
 						className={classes.nowTyping}
-						src="https://res.cloudinary.com/dna1o7hrm/image/upload/v1612406581/o8wm8wiaajskpnchmtiy.gif"
+						src="https://res.cloudinary.com/dna1o7hrm/image/upload/v1612413679/srvau5e3efvinoeinky3.gif"
 						alt="typing dots"
 					/>
 				</div>
