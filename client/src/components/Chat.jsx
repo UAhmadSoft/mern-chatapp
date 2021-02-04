@@ -229,7 +229,11 @@ export default function Chat({
 			{typing &&
 			conversation._id && (
 				<div className={classes.dots}>
-					<img className={classes.nowTyping} src="/images/dots.gif" alt="typing dots" />
+					<img
+						className={classes.nowTyping}
+						src="https://res.cloudinary.com/dna1o7hrm/image/upload/v1612406581/o8wm8wiaajskpnchmtiy.gif"
+						alt="typing dots"
+					/>
 				</div>
 			)}
 

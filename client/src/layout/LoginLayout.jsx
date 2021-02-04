@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: 'center'
 	},
 	image: {
-		backgroundImage: 'https://res.cloudinary.com/dna1o7hrm/image/upload/v1612406581/xx6gk8ptlz7hfbtf6wno.png',
+		backgroundImage: 'url(https://res.cloudinary.com/dna1o7hrm/image/upload/v1612406581/xx6gk8ptlz7hfbtf6wno.png)',
 		backgroundRepeat: 'no-repeat',
 		backgroundSize: 'cover',
 		backgroundPosition: 'center'

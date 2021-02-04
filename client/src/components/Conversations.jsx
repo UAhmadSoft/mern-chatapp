@@ -139,7 +139,11 @@ export default function Conversations({
 					secondary={
 						typing && conversation._id === convo._id ? (
 							<div style={{ position: 'absolute' }}>
-								<img style={{ width: 40, marginTop: -5 }} src="/images/dots.gif" alt="typing dots" />
+								<img
+									style={{ width: 40, marginTop: -5 }}
+									src="https://res.cloudinary.com/dna1o7hrm/image/upload/v1612406581/o8wm8wiaajskpnchmtiy.gif"
+									alt="typing dots"
+								/>
 							</div>
 						) : (
 							<span style={{ color: '#9cadc8', position: 'absolute' }}>
