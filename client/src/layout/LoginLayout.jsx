@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: 'center'
 	},
 	image: {
-		backgroundImage: 'url(/images/bg-img.png)',
+		backgroundImage: 'url(../images/bg-img.png)',
 		backgroundRepeat: 'no-repeat',
 		backgroundSize: 'cover',
 		backgroundPosition: 'center'
