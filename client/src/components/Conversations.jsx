@@ -5,8 +5,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React, { useEffect, useState } from 'react';
-import ListAvatar from '../components/ListAvatar';
 import { useGetActiveChat, useGetChatById, useMarkAsRead, useNotifications } from '../services/chatService';
+import ListAvatar from '../components/ListAvatar';
 
 const useStyles = makeStyles((theme) => ({
 	spinner: {

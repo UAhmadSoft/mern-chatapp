@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Notification = require('../../schemas/NotificationSchema');
-
 const mongoose = require('mongoose');
-
 
 router.get('/latest', async (req, res, next) => {
     Notification.find({ userTo: req.session.user._id, opened: false })

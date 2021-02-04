@@ -7,7 +7,6 @@ const User = require('../schemas/UserSchema')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
 router.get("/", (req, res, next) => {
     if (req.session.user) {
         res.send({ loggedIn: true, user: req.session.user })

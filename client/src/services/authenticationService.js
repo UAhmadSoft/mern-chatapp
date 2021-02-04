@@ -17,7 +17,7 @@ export function useIsLoggedIn() {
         };
 
         return fetch(
-            `https://mern-signal-chat.herokuapp.com/login`,
+            `/login`,
             requestOptions
         )
             .then(handleResponse)
@@ -48,7 +48,7 @@ export function useLogin() {
         };
 
         return fetch(
-            `https://mern-signal-chat.herokuapp.com/login`,
+            `/login`,
             requestOptions
         )
             .then(handleResponse)
@@ -79,7 +79,7 @@ export function useRegister() {
         };
 
         return fetch(
-            `https://mern-signal-chat.herokuapp.com/register`,
+            `/register`,
             requestOptions
         )
             .then(handleResponse)
@@ -117,7 +117,7 @@ export function useLogout() {
         };
 
         return fetch(
-            `https://mern-signal-chat.herokuapp.com/logout`,
+            `/logout`,
             requestOptions
         )
             .then(handleResponse)

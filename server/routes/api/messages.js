@@ -4,9 +4,6 @@ const router = express.Router();
 const bodyParser = require("body-parser")
 const Message = require('../../schemas/MessageSchema');
 const Chat = require('../../schemas/ChatSchema');
-const User = require('../../schemas/UserSchema');
-const Notification = require('../../schemas/NotificationSchema');
-
 const mongoose = require('mongoose');
 
 app.use(bodyParser.urlencoded({ extended: false }));

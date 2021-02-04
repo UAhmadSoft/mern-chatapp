@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const User = require('../../schemas/UserSchema');
 
-
 // Get user list
 router.get('/', async (req, res, next) => {
     User.find({ _id: { $ne: req.session.user._id } }).then(function (users) {

@@ -7,16 +7,31 @@ const session = require('express-session')
 const bodyParser = require("body-parser")
 const HashMap = require('hashmap')
 const mongoose = require('./database')
+var MongoDBStore = require('connect-mongodb-session')(session);
+const cors = require('cors')
 
 var map = new HashMap();
 
-const server = app.listen(port, () => console.log("Server listening on port " + port));
+const config = {
+    origin: 'https://inspiring-poitras-e77f4e.netlify.app',
+    preflightContinue: true,
+    credentials: true,
+};
+app.use(cors(config))
+
+const server = app.listen(process.env.PORT || 5000, () => console.log("Server listening on port " + port));
 const io = require('socket.io')(server, { pingTimeout: 25000, wsEngine: 'ws' });
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 
+var store = new MongoDBStore({
+    uri: process.env.MONGO_URI,
+    collection: 'mySessions'
+});
+
+app.set('trust proxy', 1)
 app.use(session({
     key: "userId",
     secret: 'potatoe chips',
@@ -24,7 +39,9 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         expires: Date.now() + (30 * 86400 * 1000),
-    }
+        httpOnly: true
+    },
+    store: store
 }))
 
 // Routes
@@ -84,7 +101,6 @@ io.on('connection', (socket) => {
     socket.on('typing', room => socket.to(room).emit("typing"))
     socket.on('stop typing', room => socket.to(room).emit('stop typing'))
     socket.on('notification received', room => socket.to(room).emit('notification received'))
-
 
     socket.on('disconnect', function () {
         map.delete(socket.id);

@@ -10,7 +10,6 @@ router.get("/", (req, res, next) => {
         req.session = null
         res.clearCookie('userId')
         res.json({})
-        res.redirect('/')
     }
     res.status(400)
 })
