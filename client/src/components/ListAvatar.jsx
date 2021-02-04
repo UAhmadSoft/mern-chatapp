@@ -27,7 +27,7 @@ const StyledBadge = withStyles((theme) => ({
 	}
 }))(Badge);
 
-export default function ListAvatar({ convo, onlineUsers, currentUser, isOnline, user }) {
+export default function ListAvatar({ convo, onlineUsers, currentUser, isOnline, user, online }) {
 	const classes = useStyles();
 
 	return (
@@ -39,7 +39,7 @@ export default function ListAvatar({ convo, onlineUsers, currentUser, isOnline, 
 					horizontal: 'right'
 				}}
 				variant="dot"
-				color={convo && isOnline(onlineUsers, convo.users) ? '#1CED84' : '#D0DAE9'}
+				color={convo ? isOnline(onlineUsers, convo.users) ? '#1CED84' : '#D0DAE9' : online && '#1CED84'}
 			>
 				<Avatar
 					className={classes.avatar}

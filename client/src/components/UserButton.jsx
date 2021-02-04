@@ -33,7 +33,7 @@ export default function UserButton({ user, handleClick, online, currentUser }) {
 			}}
 			button={!online}
 		>
-			<ListAvatar user={user} currentUser={currentUser} />
+			<ListAvatar user={user} currentUser={currentUser} online={online} />
 
 			<ListItemText primary={<Typography className={classes.userLabel}>{user.username}</Typography>} />
 			{online && <Dropdown currentUserId={currentUser && currentUser._id} />}
