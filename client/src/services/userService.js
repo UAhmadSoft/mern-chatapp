@@ -17,7 +17,7 @@ export function useGetUsers() {
 
     const getUsers = () => {
         return fetch(
-            `https://mern-signal-chat.herokuapp.com/api/users`,
+            `/api/users`,
             requestOptions
         )
             .then(handleResponse)
@@ -45,7 +45,7 @@ export function useSearchUsers() {
         };
 
         return fetch(
-            `https://mern-signal-chat.herokuapp.com/api/users`,
+            `/api/users`,
             requestOptions
         )
             .then(handleResponse)
