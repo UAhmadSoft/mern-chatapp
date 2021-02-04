@@ -25,6 +25,6 @@ npm run dev
 
 ```
 # Create client prod build
-cd frontend
+cd client
 npm run build
 ```
