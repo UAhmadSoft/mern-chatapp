@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: 'center'
 	},
 	image: {
-		backgroundImage: 'url(/bg-img.png)',
+		backgroundImage: 'https://res.cloudinary.com/dna1o7hrm/image/upload/v1612406581/xx6gk8ptlz7hfbtf6wno.png',
 		backgroundRepeat: 'no-repeat',
 		backgroundSize: 'cover',
 		backgroundPosition: 'center'
@@ -48,7 +48,10 @@ export default function Authorization({ children }) {
 			<Grid item xs={false} sm={4} md={5} className={classes.image}>
 				<Box className={classes.overlay}>
 					<Hidden xsDown>
-						<img width={67} src="/images/chatBubble.png" />
+						<img
+							width={67}
+							src="https://res.cloudinary.com/dna1o7hrm/image/upload/v1612406581/r1hhd9ry5wxux0tqhju0.png"
+						/>
 						<Hidden smDown>
 							<Typography className={classes.heroText} variant="h4">
 								Converse with anyone with any language
