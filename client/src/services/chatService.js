@@ -13,7 +13,7 @@ export function useCreateChat() {
         };
 
         return fetch(
-            `https://mern-signal-chat.herokuapp.com/api/chats`,
+            `/api/chats`,
             requestOptions
         )
             .then(handleResponse)
@@ -43,7 +43,7 @@ export function useGetChatById() {
         };
 
         return fetch(
-            `https://mern-signal-chat.herokuapp.com/api/chats/chatId?chatId=${chatId}`,
+            `/api/chats/chatId?chatId=${chatId}`,
             requestOptions
         )
             .then(handleResponse)
@@ -71,7 +71,7 @@ export function useGetActiveChat() {
 
     const getActiveChat = () => {
         return fetch(
-            `https://mern-signal-chat.herokuapp.com/api/chats`,
+            `/api/chats`,
             requestOptions
         )
             .then(handleResponse)
@@ -100,7 +100,7 @@ export function useSendMessage() {
         };
 
         return fetch(
-            `https://mern-signal-chat.herokuapp.com/api/messages`,
+            `/api/messages`,
             requestOptions
         )
             .then(handleResponse)
@@ -128,7 +128,7 @@ export function useGetMessages() {
         };
 
         return fetch(
-            `https://mern-signal-chat.herokuapp.com/api/messages/query?conversationId=${conversationId}`,
+            `/api/messages/query?conversationId=${conversationId}`,
             requestOptions
         )
             .then(handleResponse)
@@ -157,7 +157,7 @@ export function useNotifications() {
 
 
         return fetch(
-            `https://mern-signal-chat.herokuapp.com/api/notifications/latest`,
+            `/api/notifications/latest`,
             requestOptions
         )
             .then(handleResponse)
@@ -187,7 +187,7 @@ export function useMarkAsRead() {
 
 
         return fetch(
-            `https://mern-signal-chat.herokuapp.com/api/notifications/markasread?conversationId=${conversationId}`,
+            `/api/notifications/markasread?conversationId=${conversationId}`,
             requestOptions
         )
             .then(handleResponse)

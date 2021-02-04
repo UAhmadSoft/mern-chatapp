@@ -78,7 +78,6 @@ export default function Conversations({
 
 	useEffect(
 		() => {
-			if (!connected) return;
 			if (conversation._id) markAsRead(conversation._id);
 			getOnlineUsers();
 		},
@@ -87,7 +86,6 @@ export default function Conversations({
 
 	useEffect(
 		() => {
-			if (!connected) return;
 			const updateNotification = async () => {
 				getNotifications().then((result) => {
 					setNotifications(result);
@@ -141,7 +139,7 @@ export default function Conversations({
 							<div style={{ position: 'absolute' }}>
 								<img
 									style={{ width: 40, marginTop: -5 }}
-									src="https://res.cloudinary.com/dna1o7hrm/image/upload/v1612413679/srvau5e3efvinoeinky3.gif"
+									src="https://res.cloudinary.com/dna1o7hrm/image/upload/v1612406581/o8wm8wiaajskpnchmtiy.gif"
 									alt="typing dots"
 								/>
 							</div>

@@ -3,6 +3,7 @@ const app = express();
 const router = express.Router();
 const bodyParser = require("body-parser")
 const Message = require('../../schemas/MessageSchema');
+const Notification = require('../../schemas/NotificationSchema');
 const Chat = require('../../schemas/ChatSchema');
 const mongoose = require('mongoose');
 
@@ -50,6 +51,8 @@ router.post('/', async (req, res, next) => {
             })
                 .catch(error => console.log(error))
 
+            insertNotifications(chat, message, req)
+
             res.status(201).send(message);
         })
         .catch(error => {
@@ -57,6 +60,15 @@ router.post('/', async (req, res, next) => {
             res.sendStatus(400)
         })
 })
+
+function insertNotifications(chat, message, req) {
+    chat.users.forEach(userId => {
+        if (JSON.stringify(userId) === JSON.stringify(message.sender._id)) return;
+
+        req.io.sockets.to(userId).emit('notification received', "hey")
+        Notification.insertNotification(userId, message.sender._id, "newMessage", message.chat._id)
+    })
+}
 
 
 module.exports = router;
